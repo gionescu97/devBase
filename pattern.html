@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="street">Straße:</label>
+                    <input id="street" type="text" onchange="checkStreetPattern(this)" name="street" placeholder="z.B. Waldstraße"><span id="error_street"></span>
+                </div>
+                <div class="form-group">
+                    <label for="number">Hausnummer:</label>
+                    <input id="number" type="text" onchange="checkNumberPattern(this)" name="number" placeholder="z.B. 2a"><span id="error_number"></span>
+                </div>
+            </fieldset>
+            <button id="submitButton" disabled="true" type="submit">Absenden</button>
+        </form>
+
+        <script type="text/javascript"> 
+        var streetRegexPattern = /^([aA-zZ_äÄöÖüÜß]|\s|[-])+$/;
+        var numberRegexPattern = /^\d+[aA-zZ]{0,2}$/;
+
+
+        function setSubmitButtonState() 
+        {
+            var street = document.getElementById("street");
+            var number = document.getElementById("number");
+            var submitButton = document.getElementById("submitButton");
+
+            submitButton.disabled = !streetRegexPattern.test(street.value) || !numberRegexPattern.test(number.value);
+            
+        }
+
+        function checkNumberPattern(thisValue) 
+        {
+            validate(thisValue.value, numberRegexPattern, "error_number");
+        }
+
+        function checkStreetPattern(thisValue) 
+        {
+            validate(thisValue.value, streetRegexPattern, "error_street");
+        }
+
+        function validate(value, pattern, messageShower) 
+        {
+            if (!checkPattern(value, pattern)) {
+                document.getElementById(messageShower).innerText = value + " ist keine gültige Eingabe!";
+            }
+            else 
+            {
+                document.getElementById(messageShower).innerText = "";
+            }
+
+            setSubmitButtonState();
+        }
+
+        function checkPattern(value, pattern)
+        {
+            return pattern.test(value);  
+        }
+
+        </script>
+    </body>
+</html>
