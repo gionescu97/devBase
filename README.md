@@ -42,3 +42,19 @@
    - `bin/cake bake model all`
    - `bin/cake bake template all`
    - `bin/cake bake controller all`
+
+## Software
+- [Chocolatey](https://chocolatey.org/install)
+- [Wrokbench 6.3.8](https://downloads.mysql.com/archives/workbench/)
+- [Visual Studio Code](https://code.visualstudio.com/download)
+
+## Chocolatey
+- Git -> `choco install git`
+- XAMPP 7.4 -> `choco install xampp-74`
+
+## VS Code Extensions
+- PHP Intelephese
+- PHP IntelliSense
+- PHP Debug
+- CakePHP Snippets
+- IntelliJ IDEA Keybindings
